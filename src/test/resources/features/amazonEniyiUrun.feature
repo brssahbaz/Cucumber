@@ -1,9 +1,14 @@
 Feature: En iyi Urun
 
   @amazoneniyiurun
-  Scenario: :kullanici arama sonuclarindaki en iyi urunu bulur
+  Scenario Outline: :kullanici arama sonuclarindaki en iyi urunu bulur
     Given kullanici amazon sayfasina gider
-    And kullanici kategori olarak "Automotive" secer
-    And kullanici arama kutuusna "car phone holder" yazar
+    And kullanici kategori olarak "<kategori>" secer
+    And kullanici arama kutuusna "<urun>" yazar
     And kullanici en iyi urunu bulmak icin hesaplama yapar
-    And kullanici en iyi urunu konsola yazar
+    Then kullanici en iyi urunu konsola yazar
+    Examples:
+      | kategori   | urun             |
+      | Automotive | car phone holder |
+      | Baby       | stroller         |
+      | Books      | Java             |
